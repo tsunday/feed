@@ -121,3 +121,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEST_RUNNER = os.getenv('TEST_RUNNER', 'django_behave.runner.DjangoBehaveTestSuiteRunner')
