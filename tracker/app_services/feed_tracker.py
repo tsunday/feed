@@ -21,4 +21,4 @@ class FeedTrackerService:
 
     @classmethod
     def get_daily_report(cls, user):
-        return FeedEventRepository.get_all_events_started_today_for_user(user)
+        return list(FeedEventRepository.get_all_events_started_today_for_user(user))
