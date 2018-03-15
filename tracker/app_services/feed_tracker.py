@@ -1,3 +1,6 @@
+import datetime
+from django.utils import timezone
+
 from tracker.models.feed_event import FeedEvent
 from tracker.repositories.feed_event import FeedEventRepository
 
@@ -5,7 +8,7 @@ from tracker.repositories.feed_event import FeedEventRepository
 class FeedTrackerService:
     @classmethod
     def start_event(cls, user):
-        feed_event = FeedEvent(user=user)
+        feed_event = FeedEvent(user=user, started_at=timezone.now())
         FeedEventRepository.save(feed_event=feed_event)
 
     @classmethod
@@ -15,7 +18,8 @@ class FeedTrackerService:
         FeedEventRepository.save(feed_event)
 
     @classmethod
-    def log_event(cls, user, duration):
+    def log_event(cls, user, duration_in_minutes):
+        duration = datetime.timedelta(minutes=duration_in_minutes)
         feed_event = FeedEvent(user=user, duration=duration)
         FeedEventRepository.save(feed_event)
 
