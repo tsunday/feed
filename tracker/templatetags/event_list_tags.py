@@ -8,5 +8,5 @@ register = template.Library()
 @register.inclusion_tag('tracker/event_list_link.html')
 def show_event_list_link(user):
     return {
-        'active': FeedTrackerService.is_daily_report_empty(user)
+        'active': not FeedTrackerService.is_daily_report_empty(user)
     }

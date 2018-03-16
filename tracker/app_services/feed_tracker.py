@@ -41,5 +41,5 @@ class FeedTrackerService:
     @classmethod
     def is_daily_report_empty(cls, user):
         if not cls.get_daily_report(user):
-            return False
-        return True
+            return True
+        return False
