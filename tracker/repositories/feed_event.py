@@ -11,7 +11,7 @@ class FeedEventRepository:
 
     @classmethod
     def get_first_event_to_stop_for_user(cls, user):
-        return FeedEvent.objects.get(user=user, duration=None)
+        return FeedEvent.objects.filter(user=user, duration=None).first()
 
     @classmethod
     def get_all_events_started_today_for_user(cls, user):

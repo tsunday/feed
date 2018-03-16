@@ -1,0 +1,53 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1>Feed Tracker</h1>
+
+    {% if last_event %}
+        <p>Last saved event took: {{ last_event.duration }}</p>
+    {% endif %}
+    <button type="button" class="btn btn-primary" id="start">Start</button>
+    <button type="button" class="btn btn-secondary hidden" id="stop">Stop</button>
+
+    <script type="text/javascript">
+        function FeedTracker(start_api_url, stop_api_url) {
+            return {
+                start: function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: start_api_url,
+                        contentType: "application/json"
+                    })
+                        .done(function () {
+                            console.log('started successfully');
+                        })
+                        .fail(function () {
+                            alert('unable to start the event');
+                        });
+                },
+                stop: function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: stop_api_url,
+                        contentType: "application/json"
+                    })
+                        .done(function () {
+                            console.log('stopped successfully');
+                        })
+                        .fail(function () {
+                            alert('unable to stop the event');
+                        });
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            start_button = $('#start');
+            stop_button = $('#stop');
+
+            feedTracker = FeedTracker('{{ start_api_url }}', '{{ stop_api_url }}');
+            $(start_button).click(feedTracker.start);
+            $(stop_button).click(feedTracker.stop);
+        })
+    </script>
+{% endblock %}

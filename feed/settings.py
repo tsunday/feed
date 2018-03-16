@@ -126,3 +126,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEST_RUNNER = os.getenv('TEST_RUNNER', 'django_behave.runner.DjangoBehaveTestSuiteRunner')
+
+CSRF_USE_SESSIONS = True

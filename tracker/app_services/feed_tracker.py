@@ -8,6 +8,7 @@ from tracker.repositories.feed_event import FeedEventRepository
 class FeedTrackerService:
     @classmethod
     def start_event(cls, user):
+        print('start called')
         feed_event = FeedEvent(user=user, started_at=timezone.now())
         FeedEventRepository.save(feed_event=feed_event)
 
@@ -26,3 +27,12 @@ class FeedTrackerService:
     @classmethod
     def get_daily_report(cls, user):
         return list(FeedEventRepository.get_all_events_started_today_for_user(user))
+
+    @classmethod
+    def get_last_event(cls, user):
+        report = cls.get_daily_report(user)
+        try:
+            return report[-1]
+        except IndexError as e:
+            print(f'No reports exception: {e}')
+            return None
