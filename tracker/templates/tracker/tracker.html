@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load event_list_tags %}
 
 {% block content %}
     <h1>Feed Tracker</h1>
@@ -8,6 +9,8 @@
     {% endif %}
     <button type="button" class="btn btn-primary" id="start">Start</button>
     <button type="button" class="btn btn-secondary hidden" id="stop">Stop</button>
+
+    {% show_event_list_link user %}
 
     <script type="text/javascript">
         function FeedTracker(start_api_url, stop_api_url) {

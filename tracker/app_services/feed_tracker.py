@@ -36,3 +36,9 @@ class FeedTrackerService:
         except IndexError as e:
             print(f'No reports exception: {e}')
             return None
+
+    @classmethod
+    def is_daily_report_empty(cls, user):
+        if not cls.get_daily_report(user):
+            return False
+        return True

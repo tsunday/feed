@@ -20,5 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', django.contrib.auth.views.login, {'template_name': 'shared/login.html'}),
-    path('tracker', include('tracker.urls'))
+    path('tracker/', include('tracker.urls'))
 ]
