@@ -10,4 +10,4 @@ def step(context, number_of_entries, minutes, user):
     assert len(reports) == number_of_entries
     for report in reports:
         print(report.duration.seconds)
-        assert report.duration.seconds == minutes*60
+        assert report.duration.seconds == minutes * 60

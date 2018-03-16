@@ -1,6 +1,6 @@
 from django.urls import path
 
-from tracker.views.event_list import FeedEventListView
+from tracker.views.event_list_view import FeedEventListView
 from tracker.views.tracker_view import TrackerView, StartView, StopView
 
 app_name = 'tracker'

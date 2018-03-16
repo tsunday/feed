@@ -1,4 +1,5 @@
 import datetime
+
 from django.utils import timezone
 
 from tracker.models.feed_event import FeedEvent
