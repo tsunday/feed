@@ -18,7 +18,6 @@ Feature: User can track feeds
       And last registered event for tomasz@gmail.com took 20 minutes
 
 
-
   Scenario: Adding new tracking entries - multiple events
     Given a user tomasz@gmail.com
     When user tomasz@gmail.com starts event today at 10:00
@@ -28,7 +27,6 @@ Feature: User can track feeds
     Then daily report for tomasz@gmail.com is not empty
       And there are 2 tracking entries with 30 minutes length for tomasz@gmail.com
       And last registered event for tomasz@gmail.com took 30 minutes
-
 
 
   Scenario: No events provided
